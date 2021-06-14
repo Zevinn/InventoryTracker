@@ -4,17 +4,21 @@
 
 using namespace std;
 
-const string Macaron::getName() const
+namespace RoisCream
 {
-	return s_name;
+	const string Macaron::getName() const
+	{
+		return s_name;
+	}
+
+	const float Macaron::getPrice() const
+	{
+		return f_price;
+	}
+
+	const string Macaron::getDesc()
+	{
+		return s_desc;
+	}
 }
 
-const float Macaron::getPrice() const
-{
-	return f_price;
-}
-
-const string Macaron::getDesc()
-{
-	return s_desc;
-}

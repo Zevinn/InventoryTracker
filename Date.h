@@ -21,5 +21,13 @@ namespace RoisCream
 		Date(int s_year, int s_month, int s_day);
 		void currentDate();
 		bool valid();
+		Date& operator+=(int days);
+		Date operator+(int days);
+		bool operator==(const Date& rhs);
+		bool operator!=(const Date& rhs);
+		bool operator>(const Date& rhs);
+		bool operator<(const Date& rhs);
+		bool operator>=(const Date& rhs);
+		bool operator<=(const Date& rhs);
 	};
 }

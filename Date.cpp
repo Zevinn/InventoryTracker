@@ -53,6 +53,74 @@ namespace RoisCream
 		return isit;
 	}
 
+	Date& Date::operator+=(int days)
+	{
+		day += days;
+		if (day > mdays(year, month))
+		{
+			day -= mdays(year, month);
+			month++;
+			if (month > 12)
+			{
+				month = 1;
+				year++;
+			}
+		}
+		return *this;
+	}
+
+	Date Date::operator+(int days)
+	{
+		Date temp = Date(year, month, day);
+		temp += days;
+		return temp;
+	}
+
+	bool Date::operator==(const Date& rhs)
+	{
+		if (day != rhs.day) return false;
+		if (month != rhs.month) return false;
+		if (year != rhs.year) return false;
+
+		return true;
+	}
+
+	bool Date::operator!=(const Date& rhs)
+	{
+		if (*this == rhs) return false;
+		else return true;
+	}
+
+	bool Date::operator>(const Date& rhs)
+	{
+		if (year > rhs.year) return true;
+		if (month > rhs.month) return true;
+		if (year == rhs.year && month == rhs.month && day > rhs.day) return true;
+
+		return false;
+	}
+
+	bool Date::operator<(const Date& rhs)
+	{
+		if (*this > rhs) return false;
+		else if (*this == rhs) return false;
+		else return true;
+	}
+
+	bool Date::operator>=(const Date& rhs)
+	{
+		if (*this == rhs) return true;
+		else if (*this > rhs) return true;
+		else return false;
+	}
+
+	bool Date::operator<=(const Date& rhs)
+	{
+		if (*this == rhs) return true;
+		else if (*this < rhs) return true;
+		else return false;
+	}
+
 	void Date::currentDate()
 	{
 		time_t now = time(0); // Elapsed time from 1970, Jan, 1 till now in seconds

@@ -6,10 +6,12 @@ using namespace std;
 
 namespace RoisCream
 {
-	const string Macaron::getName() const
+	const float Macaron::f_price = 3.5f;
+
+	Macaron::Macaron()
 	{
-		return s_name;
 	}
+
 
 	const float Macaron::getPrice() const
 	{

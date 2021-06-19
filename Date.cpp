@@ -15,6 +15,13 @@ namespace RoisCream
 
 	Date::Date() : year(0), month(0), day(0)
 	{
+		time_t now = time(0); // Elapsed time from 1970, Jan, 1 till now in seconds
+		tm* local_time = localtime(&now);
+		int yr = local_time->tm_year + 1900;
+		int mth = local_time->tm_mon + 1;
+		int day = local_time->tm_mday;
+
+		*this = Date(yr, mth, day);
 	}
 
 	Date::Date(int s_year, int s_month, int s_day)
@@ -119,16 +126,5 @@ namespace RoisCream
 		if (*this == rhs) return true;
 		else if (*this < rhs) return true;
 		else return false;
-	}
-
-	void Date::currentDate()
-	{
-		time_t now = time(0); // Elapsed time from 1970, Jan, 1 till now in seconds
-		tm* local_time = localtime(&now);
-		int yr = local_time->tm_year + 1900;
-		int mth = local_time->tm_mon + 1;
-		int day = local_time->tm_mday;
-
-		*this = Date(yr, mth, day);
 	}
 }
